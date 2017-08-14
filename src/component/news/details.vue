@@ -11,17 +11,20 @@
         <div class="mui-card-content-inner" v-html="details.content"></div>
       </div>
     </div>
+    <v-comment :id="id"></v-comment>
   </section>
 </template>
 
 <script>
 import config from '../../js/config.js';
 import Ctitle from '../common/title.vue';
+import Ccomment from '../common/comment.vue';
 export default {
   data() {
     return {
       details: {},
-      title: '新闻详情'
+      title: '新闻详情',
+      id:this.$route.params.id,
     }
   },
   methods: {
@@ -34,10 +37,11 @@ export default {
   },
   created() {
     this.getDetails();
-    console.log(this.$route);
+    // console.log(this.$route);
   },
   components: {
-    'v-title': Ctitle
+    'v-title': Ctitle,
+    'v-comment':Ccomment
   }
 }
 </script>

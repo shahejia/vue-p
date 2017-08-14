@@ -1,0 +1,90 @@
+<template>
+  <section>
+    <div class="mui-card">
+      <div class="mui-card-header">
+        <h3>发表评论</h3>
+      </div>
+      <div class="mui-card-content">
+        <textarea v-model="content" id="textarea" rows="5" placeholder="发表您对我们的看法"></textarea>
+        <button @click="submitBtn" type="button" class="mui-btn mui-btn-success mui-btn-block">提交</button>
+      </div>
+    </div>
+    <div class="mui-card">
+      <div class="mui-card-header">
+        <h3>评论列表</h3>
+      </div>
+      <div class="mui-card-content">
+        <ul class="mui-table-view">
+          <li v-for="(item,i) in list" :key="i">
+            <div>
+              <span>第{{ i + 1 }}楼 </span>
+              <span>用户名：{{item.add_name}}</span>
+              <span>发表时间：{{item.add_time | formatDate('yyyy-MM-dd') }}</span>
+            </div>
+            <p>{{item.content}}</p>
+          </li>
+        </ul>
+      </div>
+      <button ref="loadMoreBtn" @click="getComment" type="button" class="mui-btn mui-btn-success mui-btn-block">获取更多</button>
+    </div>
+  
+  </section>
+</template>
+
+<script>
+import config from '../../js/config.js'
+import { Toast } from 'mint-ui';
+export default {
+  data() {
+    return {
+      content: '',
+      pageindex: 1,
+      list: [],
+    }
+  },
+  props: ['id'],
+  methods: {
+    submitBtn() {
+      let url = config.commentPut + this.id;
+      let data = { content: this.content };
+      this.$http.post(url, data, { emulateJSON: true }).then(resp => {
+        let body = resp.body;
+        // 发布成功后给出提示，并清空输入框
+        if (body.status == 0) {
+          Toast({
+            message: '操作成功',
+            iconClass: 'icon icon-success'
+          });
+          this.list.unshift({
+            add_name:'那谁',
+            add_time:Date.now(),
+            content:this.content
+          })
+          this.content = '';
+        }
+      })
+    },
+    // 获取评论列表
+    //先加载第一页,然后点击获取更多再次加载
+    getComment() {
+      let url = config.commentList + this.id + '?pageindex=' + this.pageindex;
+      this.$http.get(url).then(resp => {
+        // 如果当前页已经么有数据了，那么不用push也不用pageindex++了
+        if(resp.body.status == 0 && resp.body.message.length > 0) {
+          this.list.push(...resp.body.message);
+          this.pageindex++;
+        }else {
+          this.$refs.loadMoreBtn.disabled = true;
+        }
+      })
+    }
+  },
+  created() {
+    this.getComment()
+  }
+}
+</script>
+
+<style lang="less">
+
+</style>
