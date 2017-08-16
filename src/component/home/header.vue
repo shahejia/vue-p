@@ -13,6 +13,9 @@ export default {
 
 <style lang='less'>
   .header {
+    mt-header {
+      background-color: #26a2ff;
+    }
     div {
       height:40px;
     }

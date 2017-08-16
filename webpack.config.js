@@ -55,7 +55,7 @@ module.exports = {
       },
       // 图片，先压缩，然后打包成js模块，其中小图片会转成base64，大图片仍然为url引用
       {
-        test: /\.(png|jpg|gif|ttf)$/,
+        test: /\.(png|jpg|gif|ttf|svg)$/,
         use: [
           { loader: 'url-loader', options: { limit: 10000 } },
           'image-webpack-loader',
@@ -83,10 +83,10 @@ module.exports = {
         ]
       },
       //配置vue-preview文件代码编译
-      {
-        test: /vue-preview.src.*?js$/,
-        loader: 'babel'
-      }
+      // {
+      //   test: /vue-preview.src.*?js$/,
+      //   loader: 'babel'
+      // }
     ]
   }
 }

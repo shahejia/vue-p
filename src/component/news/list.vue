@@ -1,5 +1,5 @@
 <template>
-  <section class="list">
+  <section class="news-list">
     <v-title :title="title"></v-title>
     <ul class="mui-table-view">
       <li v-for="item in list" :key="item.id" class="mui-table-view-cell mui-media">
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang='less'>
-.list {
+.news-list {
   &_item p {
     display: inline-block;
   }

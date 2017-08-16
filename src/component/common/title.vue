@@ -1,5 +1,5 @@
 <template>
-  <section class="list mint-header">
+  <section class="title-list mint-header">
     <div @click="rollback" class="mint-header-button is-left">
       <button class="mint-button mint-button--default mint-button--normal">
         <span class="mint-button-icon">
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang='less'>
-.list {
+.title-list {
   background-color: #ddd;
   border-bottom: 1px solid #000;
 }

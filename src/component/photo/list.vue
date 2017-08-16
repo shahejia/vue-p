@@ -1,5 +1,5 @@
 <template>
-  <section class="list">
+  <section class="photo-list">
     <!--图片分类-->
     <ul class="mui-table-view">
       <router-link to="/photo/list/0">
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang='less'>
-.list {
+.photo-list {
   .mui-table-view {
     overflow: hidden;
     li {

@@ -15,4 +15,8 @@ export default {
   photoCategory: domain + '/api/getimgcategory/',//图片分类
   photoInfo: domain + '/api/getimageInfo/',//图片详情
   photoThum: domain + '/api/getthumimages/',//图片缩略图
+  //购买商品
+  goodsList: domain + '/api/getgoods/',//商品列表
+  goodsInfo: domain + '/api/goods/getinfo/', //商品参数
+  goodsDesc: domain + '/api/goods/getdesc/',//商品图文介绍
 }

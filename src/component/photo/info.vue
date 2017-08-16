@@ -8,15 +8,11 @@
         <p style="color: #333;">访问量：{{info.click}}</p>
       </div>
       <div class="mui-card-content">
-        <div class="mui-card-content-inner">
-          <ul class="mui-table-view mui-grid-view">
-            <li class="mui-table-view-cell mui-media mui-col-xs-4" v-for="item in thum" :key="item.src">
-              <a href="javascript:;">
-                <img class="mui-media-object" :src="item.src"/>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul class="mui-table-view mui-grid-view">
+          <li class="mui-table-view-cell mui-media mui-col-xs-4" v-for="item in thum" :key="item.src">
+            <img v-preview="item.src" :src="item.src" />
+          </li>
+        </ul>
       </div>
       <div class="mui-card-footer" v-html="info.content"></div>
     </div>
@@ -74,6 +70,11 @@ export default {
   .mui-card-content-inner {
     p {
       display: inline-block;
+    }
+  }
+  .mui-card-content {
+    img {
+      height: 100px;
     }
   }
 }
