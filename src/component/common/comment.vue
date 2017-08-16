@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="comment">
     <div class="mui-card">
       <div class="mui-card-header">
         <h3>发表评论</h3>
@@ -56,9 +56,9 @@ export default {
             iconClass: 'icon icon-success'
           });
           this.list.unshift({
-            add_name:'那谁',
-            add_time:Date.now(),
-            content:this.content
+            add_name: '那谁',
+            add_time: Date.now(),
+            content: this.content
           })
           this.content = '';
         }
@@ -70,10 +70,10 @@ export default {
       let url = config.commentList + this.id + '?pageindex=' + this.pageindex;
       this.$http.get(url).then(resp => {
         // 如果当前页已经么有数据了，那么不用push也不用pageindex++了
-        if(resp.body.status == 0 && resp.body.message.length > 0) {
+        if (resp.body.status == 0 && resp.body.message.length > 0) {
           this.list.push(...resp.body.message);
           this.pageindex++;
-        }else {
+        } else {
           this.$refs.loadMoreBtn.disabled = true;
         }
       })
@@ -86,5 +86,17 @@ export default {
 </script>
 
 <style lang="less">
-
+  .comment {
+    .mui-card-content {
+      padding: 4px 8px;
+      p {
+        background-color: rgba(0, 0, 0, .3);
+        color: #333;
+      }
+    }
+    .mui-btn-success {
+      background-color: #1be4db;
+      border-color: #1be4db;
+    }
+  }
 </style>

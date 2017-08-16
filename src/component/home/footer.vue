@@ -6,13 +6,13 @@
         <span class="mui-tab-label">首页</span>
       </a>
       <a class="mui-tab-item" href="#tabbar-with-chat">
-        <span class="mui-icon mui-icon-extra mui-icon-extra-gift">
-          <span class="mui-badge">0</span>
-        </span>
+        <span class="mui-icon mui-icon-extra mui-icon-extra-gift"></span>
         <span class="mui-tab-label">商品购买</span>
       </a>
       <a class="mui-tab-item" href="#tabbar-with-contact">
-        <span class="mui-icon mui-icon-extra mui-icon-extra-express"></span>
+        <span class="mui-icon mui-icon-extra mui-icon-extra-express">
+          <span class="mui-badge">0</span>
+        </span>
         <span class="mui-tab-label">购物车</span>
       </a>
       <a class="mui-tab-item" href="#tabbar-with-map">

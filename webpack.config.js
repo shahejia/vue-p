@@ -27,14 +27,14 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',          
+          'css-loader',
         ]
       },
       {
         test: /\.less$/,
         use: [
           'style-loader',
-          'css-loader',         
+          'css-loader',
           'less-loader',
         ]
       },
@@ -81,6 +81,11 @@ module.exports = {
         use: [
           'vue-loader'
         ]
+      },
+      //配置vue-preview文件代码编译
+      {
+        test: /vue-preview.src.*?js$/,
+        loader: 'babel'
       }
     ]
   }
